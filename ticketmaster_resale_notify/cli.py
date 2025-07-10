@@ -223,7 +223,9 @@ async def async_main() -> None:
     if args.ntfy_topic:
         config.notification.topic = cli_config.notification.topic
     
-    if args.headless is not None:  # Only update if explicitly set
+    import sys
+    # Only override headless if explicitly set in CLI
+    if '--headless' in sys.argv or '--no-headless' in sys.argv:
         config.scraper.headless = cli_config.scraper.headless
     
     if args.browser_timeout:
