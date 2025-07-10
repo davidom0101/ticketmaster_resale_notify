@@ -1,5 +1,5 @@
 """Data models and types for the Ticketmaster Resale Notifier."""
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Optional, Tuple, List, Dict, Any
 
@@ -69,5 +69,5 @@ class AppConfig:
     browser_timeout: int = 360  # seconds
     max_retries: int = 3
     log_level: str = "INFO"
-    scraper: ScraperConfig = ScraperConfig()
-    notification: NotificationConfig = NotificationConfig()
+    scraper: ScraperConfig = field(default_factory=ScraperConfig)
+    notification: NotificationConfig = field(default_factory=NotificationConfig)
